@@ -1,5 +1,7 @@
 from flask import Flask
 from flask import request
+from flask import render_template
+from flask import Markup
 import subprocess
 
 
@@ -29,7 +31,7 @@ def status_test():
         except subprocess.CalledProcessError as e:
             return "An error occurred while trying to fetch task status updates."
 
-        return """<pre>%s</pre>""" % (result_command.decode())
+        return render_template('response.html', response=Markup(result_command.decode()))
     else:
         return """<title>404 Not Found</title>
                <h1>Not Found</h1>
@@ -49,7 +51,7 @@ def update_test():
         except subprocess.CalledProcessError as e:
             return "An error occurred while trying to fetch task status updates."
 
-        return """<pre>%s</pre>""" % (result_command.decode())
+        return render_template('response.html', response=Markup(result_command.decode()))
     else:
         return """<title>404 Not Found</title>
                <h1>Not Found</h1>
