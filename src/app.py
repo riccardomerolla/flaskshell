@@ -7,7 +7,7 @@ app = Flask('flaskshell')
 #ip_whitelist = ['192.168.1.2', '192.168.1.3']
 
 status_script = "cd {0} && sudo docker-compose ps && docker-compose logs --tail 200"
-update_script = "cd {0} && sudo docker-compose pull && sudo docker-compose stop && sudo docker-compose rm -f -v && sudo docker-compose up -d"
+update_script = "cd {0} && docker-compose pull && docker-compose stop && docker-compose rm -f -v && docker-compose up -d"
 test_env = "/opt/sixster"
 
 def valid_ip():
